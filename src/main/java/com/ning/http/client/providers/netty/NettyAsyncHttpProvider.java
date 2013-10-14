@@ -111,7 +111,6 @@ import org.jboss.netty.handler.stream.ChunkedWriteHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
 import com.ning.http.client.AsyncHandler;
 import com.ning.http.client.AsyncHandler.STATE;
 import com.ning.http.client.AsyncHttpClientConfig;
@@ -804,7 +803,7 @@ public class NettyAsyncHttpProvider extends SimpleChannelUpstreamHandler impleme
                                 sb.append("&");
                             }
                             String charset = request.getBodyEncoding();
-                            if(charset != null && charset != Charsets.UTF_8.name()){
+                            if(charset != null && charset != Charset.forName("utf8").name()){
                             	sb.append(URLEncoder.encode(key, Charset.forName(charset).name()));
                             	sb.append("=");
                                 sb.append(URLEncoder.encode(value, Charset.forName(charset).name()));
